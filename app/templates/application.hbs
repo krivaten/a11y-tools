@@ -1,5 +1,15 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+<div class="container">
+    <header class="m-y(3) bgc(white) bs(1) p(3) bdrad(1)">
+        <nav>
+            <ul class="ls(n)">
+                <li>{{link-to 'Home' 'index'}}</li>
+                <li>{{link-to 'Icons' 'icons'}}</li>
+                <li>{{link-to 'Forms' 'forms'}}</li>
+                <li>{{link-to 'Numbers' 'numbers'}}</li>
+                <li>{{link-to 'Currency' 'currency'}}</li>
+            </ul>
+        </nav>
+    </header>
 
-{{outlet}}
+    {{focusing-outlet tagName='main' class='m-y(3) bgc(white) bs(1) p(3) bdrad(1)'}}
+</div>

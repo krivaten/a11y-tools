@@ -1,0 +1,72 @@
+<h2>Send the Moneys</h2>
+<form>
+    {{#ui-fieldset legend="What is you favorite protein?"}}
+        {{ui-checkbox-input
+            checked=chickenTest
+            update=(action (mut chickenTest))
+            label="Chicken"
+            description="You know, that dried out meat"}}
+        {{ui-checkbox-input
+            checked=beefTest
+            update=(action (mut beefTest))
+            label="Beef"
+            description="Do you love steak?"}}
+        {{ui-checkbox-input
+            disabled=true
+            checked=tofuTest
+            update=(action (mut chickenTest))
+            label="Tofu"
+            description="Just no"}}
+    {{/ui-fieldset}}
+
+
+    {{#ui-fieldset legend="What is your favorite nutrient?"}}
+        {{ui-radio-input
+            value="Protein"
+            label="Super Muscle Powder"
+            checked=(eq nutrientTest "Protein")
+            update=(action (mut nutrientTest))}}
+        {{ui-radio-input
+            value="Vitamin D"
+            label="Immunity Pills"
+            checked=(eq nutrientTest "Vitamin D")
+            update=(action (mut nutrientTest))}}
+        {{ui-radio-input
+            value="Sugar"
+            checked=(eq nutrientTest "Sugar")
+            disabled=true
+            update=(action (mut nutrientTest))}}
+    {{/ui-fieldset}}
+
+
+    {{#ui-form-group label="Postal Code" as |inputId|}}
+        {{ui-postal-input
+            id=inputId
+            value=postalTest
+            update=(action (mut postalTest))}}
+    {{/ui-form-group}}
+
+    {{#ui-form-group label="Social Security Number" as |inputId|}}
+        {{ui-ssn-input
+            id=inputId
+            value=ssnTest
+            update=(action (mut ssnTest))}}
+    {{/ui-form-group}}
+
+    {{#ui-form-group label="Dollar Amount" as |inputId|}}
+        {{ui-currency-input
+            id=inputId
+            value=currencyTest
+            update=(action (mut currencyTest))}}
+    {{/ui-form-group}}
+</form>
+
+<hr />
+
+<ul class="ls(n) m-y(3)">
+    <li>Check Result: {{chickenTest}}</li>
+    <li>Radio Result: {{nutrientTest}}</li>
+    <li>Postal Result: {{postalTest}}</li>
+    <li>SSN Result: {{ssnTest}}</li>
+    <li>Currency Result: {{currencyTest}}</li>
+</ul>

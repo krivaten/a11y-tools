@@ -1,0 +1,9 @@
+<div>
+    <label class="{{unless labelVisible 'sr-only'}}" for={{inputId}} test-id="txtLabel">{{loc label}}</label>
+
+    {{#if hasBlock}}
+        <div>
+            {{yield inputId descriptionId}}
+        </div>
+    {{/if}}
+</div>

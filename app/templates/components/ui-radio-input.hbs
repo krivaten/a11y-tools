@@ -1,0 +1,15 @@
+<input class="sr" id={{inputId}} type="radio" disabled={{disabled}} name={{name}} value={{value}} checked={{checked}} aria-describedby={{if description descriptionId}} onChange={{action "change"}}>
+<label class="d(if) ai(c)" for={{inputId}}>
+    <svg width="20" height="20" viewBox="0 0 20 20">
+        <circle stroke="none" fill="none" stroke-width="2" cx="10" cy="10" r="9"></circle>
+        <circle stroke="none" fill="none" stroke-width="2" cx="10" cy="10" r="6"></circle>
+    </svg>
+    <div class="m-l(2)">
+        {{displayLabel}}
+        {{#if description}}
+            <div class="small" aria-hidden="true" id={{descriptionId}}>
+                {{description}}
+            </div>
+        {{/if}}
+    </div>
+</label>

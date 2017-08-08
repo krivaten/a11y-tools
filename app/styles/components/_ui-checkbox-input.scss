@@ -1,0 +1,33 @@
+.ui-checkbox-input {
+    rect {
+        stroke: $gray;
+    }
+    polyline {
+        stroke: none;
+    }
+
+    input {
+        &:focus {
+            ~ label {
+                rect {
+                    stroke: $primary;
+                    fill: $gray-l2;
+                }
+            }
+        }
+
+        &:checked {
+            ~ label {
+                polyline {
+                    stroke: $primary;
+                }
+            }
+        }
+
+        &:disabled {
+            ~ label {
+                opacity: 0.3;
+            }
+        }
+    }
+}

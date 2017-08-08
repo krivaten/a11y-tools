@@ -1,0 +1,31 @@
+.ui-radio-input {
+    circle:nth-child(1) {
+        stroke: $gray;
+    }
+
+    input {
+        &:focus {
+            ~ label {
+                circle:nth-child(1) {
+                    stroke: $primary;
+                    fill: $gray-l2;
+                }
+            }
+        }
+
+        &:checked {
+            ~ label {
+                circle:nth-child(2) {
+                    fill: $primary;
+                }
+            }
+        }
+
+        &:disabled {
+            ~ label {
+                opacity: 0.3;
+            }
+        }
+    }
+}
+

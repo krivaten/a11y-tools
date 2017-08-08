@@ -7,6 +7,10 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('icons');
+  this.route('forms');
+  this.route('numbers');
+  this.route('currency');
 });
 
 export default Router;

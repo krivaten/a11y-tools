@@ -1,0 +1,15 @@
+<input class="sr" id={{inputId}} type="checkbox" disabled={{disabled}} name={{name}} checked={{checked}} aria-describedby={{if description descriptionId}} onChange={{action "change"}}>
+<label class="d(if) ai(c)" for={{inputId}}>
+    <svg width="20" height="20" viewBox="0 0 20 20">
+        <rect fill="none" stroke="none" stroke-width="2" x="1" y="1" width="18" height="18" rx="3"></rect>
+        <polyline fill="none" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="4 11.4390244 7.44978307 15.0611808 16 5"></polyline>
+    </svg>
+    <div class="m-l(2)">
+        {{label}}
+        {{#if description}}
+            <div class="small" aria-hidden="true" id={{descriptionId}}>
+                {{description}}
+            </div>
+        {{/if}}
+    </div>
+</label>
