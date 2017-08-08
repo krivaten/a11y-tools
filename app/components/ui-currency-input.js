@@ -19,10 +19,6 @@ const UiInputComponent = UiInput.extend({
     ],
     type: 'tel',
 
-    // MASK SETUP
-    // TODOS:
-    // Paste Values
-    // Max Length
     textMaskInputElement: computed(...MASK_PROPS, function() {
         let config = getProperties(this, ['prefix', ...MASK_PROPS]);
         config.mask = get(this, 'mask').bind(this);
@@ -65,35 +61,44 @@ const UiInputComponent = UiInput.extend({
         event.preventDefault();
 
         let value = event.clipboardData.getData('Text');
-        value = value ? parseFloat(value).toFixed(2) : value;
+        let valueLength = value.length;
+        value = value ? parseFloat(value.replace(/[^0-9]/g, '')).toFixed(2) : '';
 
-        this._processNewValue(value);
+        get(this, 'textMaskInputElement').update(value);
+        this._dispatchUpdate(value, valueLength, value.length);
     },
 
-    _processNewValue(value='', event) {
+    _processNewValue(value='') {
         const selectionStart = this.element.selectionStart;
         let valueLength = value.length;
         let cleanValue = value ? (value.replace(/[^0-9]/g, '') * 0.01).toFixed(2) : '';
 
-        get(this, 'textMaskInputElement').update(cleanValue);
-
-        let updatedValue = this.readDOMAttr('value');
-        let updatedValueLength = updatedValue.length;
-
-        const shouldBeAtEnd = selectionStart === valueLength;
-        if (shouldBeAtEnd) {
-            this.element.setSelectionRange(updatedValueLength, updatedValueLength);
-        } else {
-            const newPosition = selectionStart + (updatedValueLength - valueLength);
-
-            this.element.setSelectionRange(newPosition, newPosition)
-        }
-
-        if (this._value !== updatedValue) {
-            this._value = updatedValue;
-            this.sendAction('update', updatedValue, event);
-        }
+        this._dispatchUpdate(cleanValue, valueLength, selectionStart)
     },
+
+    _dispatchUpdate(value, valueLength, selectionStart) {
+        get(this, 'textMaskInputElement').update(value);
+
+        Ember.run.later(() => {
+            let updatedValue = this.readDOMAttr('value');
+            let updatedValueLength = updatedValue.length;
+
+            const shouldBeAtEnd = selectionStart === valueLength;
+            if (shouldBeAtEnd) {
+                this.element.setSelectionRange(updatedValueLength, updatedValueLength);
+            } else {
+                const newPosition = selectionStart + (updatedValueLength - valueLength);
+
+                this.element.setSelectionRange(newPosition, newPosition)
+            }
+
+            if (this._value !== updatedValue) {
+                this._value = updatedValue;
+                this.sendAction('update', updatedValue);
+            }
+
+        }, 10);
+    }
 });
 
 export default UiInputComponent;

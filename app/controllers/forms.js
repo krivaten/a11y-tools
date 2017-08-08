@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
     chickenTest: true,
     nutrientTest: 'Vitamin D',
     postalTest: null,
-    currencyTest: '123',
+    currencyTest: null,
 
     submitted: false,
     changeset: {},
@@ -12,8 +12,6 @@ export default Ember.Controller.extend({
     value: 'Test',
     actions: {
         validateProperty: () => {
-
-            console.log('THIS', ...arguments)
         }
     }
 });

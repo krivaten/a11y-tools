@@ -13,6 +13,7 @@ const MASK_PROPS = ['mask', 'guide', 'placeholderChar', 'keepCharPositions', 'pi
 const UiInputComponent = UiInput.extend({
     classNames: ['ui-postal-input'],
     type: 'tel',
+    placeholder: '000-00-0000',
 
     mask: [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
 
