@@ -4,7 +4,3 @@
 // Components
 @import 'components/ui-checkbox-input';;
 @import 'components/ui-radio-input';;
-
-main:focus {
-    background-color: rgba($primary, 0.3);
-}

@@ -68,7 +68,11 @@ const UiInputComponent = UiInput.extend({
         this._dispatchUpdate(value, valueLength, value.length);
     },
 
-    _processNewValue(value='') {
+    _processNewValue(value='', event) {
+        if (event) {
+            event.stopPropagation();
+            event.preventDefault();
+        }
         const selectionStart = this.element.selectionStart;
         let valueLength = value.length;
         let cleanValue = value ? (value.replace(/[^0-9]/g, '') * 0.01).toFixed(2) : '';
