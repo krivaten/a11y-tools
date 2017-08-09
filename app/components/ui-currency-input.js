@@ -56,13 +56,14 @@ const UiInputComponent = UiInput.extend({
         this.element.addEventListener('paste', (event) => this.onPaste(event), false);
     },
 
+    cleanValue: (value) => (value ? parseFloat(value.replace(/\D/g, '') * 0.01).toFixed(2) : ''),
     onPaste(event) {
         event.stopPropagation();
         event.preventDefault();
 
         let value = event.clipboardData.getData('Text');
         let valueLength = value.length;
-        value = value ? parseFloat(value.replace(/[^0-9]/g, '')).toFixed(2) : '';
+        value = this.cleanValue(value);
 
         get(this, 'textMaskInputElement').update(value);
         this._dispatchUpdate(value, valueLength, value.length);
@@ -75,9 +76,13 @@ const UiInputComponent = UiInput.extend({
         }
         const selectionStart = this.element.selectionStart;
         let valueLength = value.length;
-        let cleanValue = value ? (value.replace(/[^0-9]/g, '') * 0.01).toFixed(2) : '';
+        value = value ? this.cleanValue(value) : '';
 
-        this._dispatchUpdate(cleanValue, valueLength, selectionStart)
+        if (value.length > 16) {
+            value = this.cleanValue(this._value);
+        }
+
+        this._dispatchUpdate(value, valueLength, selectionStart)
     },
 
     _dispatchUpdate(value, valueLength, selectionStart) {
