@@ -2049,9 +2049,9 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
-elassus@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/elassus/-/elassus-1.1.1.tgz#5847118e9ce97291e65062b83f66c39fcf1fb16d"
+elassus@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/elassus/-/elassus-1.1.4.tgz#b10cd4a1c28118ded2aca837b75a62c481a392a4"
 
 electron-to-chromium@^1.3.16:
   version "1.3.16"
@@ -5931,6 +5931,10 @@ validate-npm-package-name@^3.0.0:
   resolved "https://registry.yarnpkg.com/validate-npm-package-name/-/validate-npm-package-name-3.0.0.tgz#5fa912d81eb7d0c74afc140de7317f0ca7df437e"
   dependencies:
     builtins "^1.0.3"
+
+vanilla-text-mask@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/vanilla-text-mask/-/vanilla-text-mask-5.0.1.tgz#903aebbfe9e257d67105b5ca7f82cac365f3ca97"
 
 vary@~1.1.1:
   version "1.1.1"

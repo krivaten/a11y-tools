@@ -20,12 +20,14 @@ const UiInputComponent = Component.extend({
     tagName: 'input',
     classNames: [
         'ui-input',
+        'ol(n)',
         'd(b)',
         'w(100%)',
         'p(2)',
         'bdrad(2)',
-        'bd(1)',
-        'bdc(gray)'
+        'bd(2)',
+        'bdc(gray)',
+        'bdc(primary):f'
     ],
 
     attributeBindings: [
